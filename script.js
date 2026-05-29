@@ -9,6 +9,8 @@ I decided to work at an emergency center to become a better doctor. || よりよ
 My boss challenged me to take action. || 上司は私に行動を起こすよう促しました。
 Things will work out if you start doing something. || 何かを始めれば、物事はうまくいくでしょう。`;
 
+const TEACHER_PASSWORD = "hkthirako";
+
 let questions = [];
 let currentIndex = 0;
 let draggedToken = null;
@@ -56,6 +58,15 @@ const restartBtn = document.getElementById("restart-btn");
 function showScreen(screen) {
   [teacherScreen, quizScreen, finishScreen, lessonListScreen].forEach(s => s.classList.remove("active"));
   screen.classList.add("active");
+}
+
+function requestTeacherAccess() {
+  const input = prompt("Teacher Modeのパスワードを入力してください。");
+  if (input === TEACHER_PASSWORD) {
+    showScreen(teacherScreen);
+  } else if (input !== null) {
+    alert("パスワードが違います。");
+  }
 }
 
 function normalizeText(text) {
@@ -310,8 +321,8 @@ previewBtn.addEventListener("click", previewQuiz);
 sampleBtn.addEventListener("click", () => { lessonIdInput.value = "myanmar01"; sentenceInput.value = sampleText; studentUrlBox.classList.add("hidden"); codeOutputBox.classList.add("hidden"); });
 copyUrlBtn.addEventListener("click", () => copyText(studentUrlInput.value, copyMessage, "生徒用URLをコピーしました。"));
 copySnippetBtn.addEventListener("click", () => copyText(snippetOutput.value, null, ""));
-teacherBtn.addEventListener("click", () => showScreen(teacherScreen));
-openTeacherBtn.addEventListener("click", () => showScreen(teacherScreen));
+teacherBtn.addEventListener("click", requestTeacherAccess);
+openTeacherBtn.addEventListener("click", requestTeacherAccess);
 checkBtn.addEventListener("click", checkAnswer);
 hintBtn.addEventListener("click", showHint);
 resetBtn.addEventListener("click", resetQuestion);

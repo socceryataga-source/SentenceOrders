@@ -49,3 +49,10 @@ Teacher Modeの「追加用コードを表示」を使います。
 ## 注意
 Teacher Modeで入力しただけでは、生徒用サイトには反映されません。
 必ず生成した lessons.js をGitHubにアップロードしてください。
+
+
+## Teacher Modeのパスワード
+Teacher Modeを開くとき、または生徒画面からTeacher Modeボタンを押したときは、パスワード入力が必要です。
+
+パスワード：
+hkthirako
