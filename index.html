@@ -12,35 +12,39 @@
       <div>
         <p class="eyebrow">English Warm-up Activity</p>
         <h1>Word Order Builder</h1>
-        <p class="subtitle">教師用画面で問題を作成し、生徒用URLを配布できます。</p>
+        <p class="subtitle">固定URLで使える、語順並べ替え教材サイト</p>
       </div>
-      <div class="badge">Blue Edition v2</div>
+      <div class="badge">Lessons Edition</div>
     </header>
 
     <main>
-      <!-- Teacher Screen -->
-      <section id="teacher-screen" class="screen active">
+      <section id="teacher-screen" class="screen">
         <div class="panel">
           <div class="section-title-row">
             <div>
               <h2>Teacher Mode</h2>
-              <p class="lead">
-                英文と日本語訳を入力し、「生徒用URLを作成」を押してください。
-                生徒用URLでは正解英文は表示されません。
-              </p>
+              <p class="lead">lesson ID・英文・日本語訳を入力すると、GitHubにアップロードするための <strong>lessons.js</strong> を生成できます。</p>
             </div>
             <span class="teacher-chip">教師用</span>
           </div>
 
+          <div class="notice-box">
+            <strong>基本運用</strong>
+            <ol>
+              <li>lesson ID と問題を入力する</li>
+              <li>「lessons.jsを生成・ダウンロード」を押す</li>
+              <li>GitHub上の <code>lessons.js</code> を上書きする</li>
+              <li>表示された生徒用URLを配布する</li>
+            </ol>
+          </div>
+
+          <label class="field-label" for="lesson-id">Lesson ID</label>
+          <input id="lesson-id" class="lesson-input" value="myanmar01" maxlength="40" />
+
           <div class="format-box">
             <strong>入力形式</strong>
-            <p>
-              1行につき1問です。<br>
-              <code>英文 || 日本語訳</code> の形で入力してください。
-            </p>
-            <p class="small-note">
-              英文に「/」を入れるとチャンク単位になります。入れない場合は単語単位です。
-            </p>
+            <p>1行につき1問です。最大10問まで読み込みます。<br><code>英文 || 日本語訳</code></p>
+            <p class="small-note">英文に「/」を入れるとチャンク単位、入れない場合は単語単位になります。</p>
           </div>
 
           <textarea id="sentence-input" spellcheck="false">I believed that people's destinies depended on when and where they were born. || 人々の運命は、いつどこで生まれたかによって決まるのだと私は信じていました。
@@ -55,35 +59,38 @@ My boss challenged me to take action. || 上司は私に行動を起こすよう
 Things will work out if you start doing something. || 何かを始めれば、物事はうまくいくでしょう。</textarea>
 
           <div class="input-help">
-            <div>
-              <strong>単語単位：</strong>
-              <code>I was shocked by the tragic sight. || 私はその悲惨な光景に衝撃を受けました。</code>
-            </div>
-            <div>
-              <strong>チャンク単位：</strong>
-              <code>I was shocked / by the tragic sight. || 私はその悲惨な光景に衝撃を受けました。</code>
-            </div>
+            <div><strong>単語単位：</strong> <code>I was shocked by the tragic sight. || 私はその悲惨な光景に衝撃を受けました。</code></div>
+            <div><strong>チャンク単位：</strong> <code>I was shocked / by the tragic sight. || 私はその悲惨な光景に衝撃を受けました。</code></div>
           </div>
 
           <div class="actions">
-            <button id="create-url-btn" class="primary">生徒用URLを作成</button>
+            <button id="download-lessons-btn" class="primary">lessons.jsを生成・ダウンロード</button>
+            <button id="show-code-btn" class="secondary">追加用コードを表示</button>
             <button id="preview-btn" class="secondary">生徒画面をプレビュー</button>
             <button id="sample-btn" class="ghost">Sampleに戻す</button>
           </div>
 
-          <div id="url-output" class="url-output hidden">
+          <div id="student-url-box" class="url-output hidden">
             <h3>生徒用URL</h3>
-            <p>このURLをGoogle ClassroomやQRコードで配布してください。</p>
+            <p>GitHubに <code>lessons.js</code> をアップロード後、このURLを生徒に配布します。</p>
             <div class="url-row">
               <input id="student-url" readonly />
               <button id="copy-url-btn" class="primary">Copy</button>
             </div>
             <p id="copy-message" class="copy-message"></p>
           </div>
+
+          <div id="code-output-box" class="code-output hidden">
+            <h3>既存の lessons.js に追加する場合</h3>
+            <p>過去のレッスンを残したい場合は、下のコードを <code>window.LESSONS = { ... }</code> の中に追加してください。</p>
+            <textarea id="snippet-output" readonly spellcheck="false"></textarea>
+            <div class="actions">
+              <button id="copy-snippet-btn" class="secondary">追加用コードをコピー</button>
+            </div>
+          </div>
         </div>
       </section>
 
-      <!-- Student Quiz Screen -->
       <section id="quiz-screen" class="screen">
         <div class="quiz-top">
           <button id="teacher-btn" class="text-button">Teacher Mode</button>
@@ -127,7 +134,17 @@ Things will work out if you start doing something. || 何かを始めれば、�
         </div>
       </section>
 
-      <!-- Finish Screen -->
+      <section id="lesson-list-screen" class="screen">
+        <div class="panel">
+          <h2>Lessonを選択</h2>
+          <p id="lesson-message" class="lead"></p>
+          <div id="lesson-list" class="lesson-list"></div>
+          <div class="actions">
+            <button id="open-teacher-btn" class="secondary">Teacher Modeを開く</button>
+          </div>
+        </div>
+      </section>
+
       <section id="finish-screen" class="screen">
         <div class="panel finish-panel">
           <div class="finish-icon">✓</div>
@@ -139,6 +156,7 @@ Things will work out if you start doing something. || 何かを始めれば、�
     </main>
   </div>
 
+  <script src="lessons.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
