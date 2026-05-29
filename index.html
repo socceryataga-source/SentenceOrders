@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Word Order Builder</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">English Warm-up Activity</p>
+        <h1>Word Order Builder</h1>
+        <p class="subtitle">教師用画面で問題を作成し、生徒用URLを配布できます。</p>
+      </div>
+      <div class="badge">Blue Edition v2</div>
+    </header>
+
+    <main>
+      <!-- Teacher Screen -->
+      <section id="teacher-screen" class="screen active">
+        <div class="panel">
+          <div class="section-title-row">
+            <div>
+              <h2>Teacher Mode</h2>
+              <p class="lead">
+                英文と日本語訳を入力し、「生徒用URLを作成」を押してください。
+                生徒用URLでは正解英文は表示されません。
+              </p>
+            </div>
+            <span class="teacher-chip">教師用</span>
+          </div>
+
+          <div class="format-box">
+            <strong>入力形式</strong>
+            <p>
+              1行につき1問です。<br>
+              <code>英文 || 日本語訳</code> の形で入力してください。
+            </p>
+            <p class="small-note">
+              英文に「/」を入れるとチャンク単位になります。入れない場合は単語単位です。
+            </p>
+          </div>
+
+          <textarea id="sentence-input" spellcheck="false">I believed that people's destinies depended on when and where they were born. || 人々の運命は、いつどこで生まれたかによって決まるのだと私は信じていました。
+I was shocked by the tragic sight. || 私はその悲惨な光景に衝撃を受けました。
+I carried on with my daily life. || 私は日常生活を続けました。
+You must become a doctor to help suffering children. || あなたは苦しんでいる子どもたちを助けるために医者にならなければなりません。
+My desire to become a doctor and help people in need grew stronger. || 医者になって困っている人々を助けたいという私の思いはさらに強くなりました。
+I decided to believe in myself and studied hard to improve my grades. || 私は自分を信じることに決め、成績を上げるために一生懸命勉強しました。
+I obtained my medical license and began working at a hospital. || 私は医師免許を取得し、病院で働き始めました。
+I decided to work at an emergency center to become a better doctor. || よりよい医者になるために、私は救急センターで働くことに決めました。
+My boss challenged me to take action. || 上司は私に行動を起こすよう促しました。
+Things will work out if you start doing something. || 何かを始めれば、物事はうまくいくでしょう。</textarea>
+
+          <div class="input-help">
+            <div>
+              <strong>単語単位：</strong>
+              <code>I was shocked by the tragic sight. || 私はその悲惨な光景に衝撃を受けました。</code>
+            </div>
+            <div>
+              <strong>チャンク単位：</strong>
+              <code>I was shocked / by the tragic sight. || 私はその悲惨な光景に衝撃を受けました。</code>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button id="create-url-btn" class="primary">生徒用URLを作成</button>
+            <button id="preview-btn" class="secondary">生徒画面をプレビュー</button>
+            <button id="sample-btn" class="ghost">Sampleに戻す</button>
+          </div>
+
+          <div id="url-output" class="url-output hidden">
+            <h3>生徒用URL</h3>
+            <p>このURLをGoogle ClassroomやQRコードで配布してください。</p>
+            <div class="url-row">
+              <input id="student-url" readonly />
+              <button id="copy-url-btn" class="primary">Copy</button>
+            </div>
+            <p id="copy-message" class="copy-message"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Student Quiz Screen -->
+      <section id="quiz-screen" class="screen">
+        <div class="quiz-top">
+          <button id="teacher-btn" class="text-button">Teacher Mode</button>
+          <div class="progress-wrap">
+            <div id="progress-text">Question 1 / 10</div>
+            <div class="progress-track"><div id="progress-bar"></div></div>
+          </div>
+        </div>
+
+        <div class="quiz-card">
+          <div class="question-head">
+            <div>
+              <p class="eyebrow dark">Arrange the English cards</p>
+              <h2 id="question-title">Question 1</h2>
+            </div>
+            <span id="mode-label" class="mode-label">Word Mode</span>
+          </div>
+
+          <div class="translation-box">
+            <div class="translation-label">日本語訳</div>
+            <div id="jp-text" class="jp-text"></div>
+          </div>
+
+          <div id="hint-box" class="hint-box hidden"></div>
+
+          <div class="area-label">並べた答え</div>
+          <div id="answer-area" class="drop-area answer-area"></div>
+
+          <div class="area-label">英語の選択肢</div>
+          <div id="bank-area" class="drop-area bank-area"></div>
+
+          <div id="feedback" class="feedback"></div>
+
+          <div class="quiz-actions">
+            <button id="check-btn" class="primary">Check</button>
+            <button id="hint-btn" class="secondary">Hint</button>
+            <button id="reset-btn" class="secondary">Reset</button>
+            <button id="back-btn" class="secondary">Back</button>
+            <button id="next-btn" class="primary">Next</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Finish Screen -->
+      <section id="finish-screen" class="screen">
+        <div class="panel finish-panel">
+          <div class="finish-icon">✓</div>
+          <h2>Finished!</h2>
+          <p>すべての問題が終了しました。</p>
+          <button id="restart-btn" class="primary">もう一度取り組む</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
