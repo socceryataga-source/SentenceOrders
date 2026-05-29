@@ -271,12 +271,25 @@ function loadQuestion(index) {
 
 function getCurrentAnswerTokens() { return [...answerArea.querySelectorAll(".token")].map(el => el.textContent); }
 
+function correctAnswerText(q) {
+  return q.mode === "chunk" ? q.tokens.join(" / ") : q.tokens.join(" ");
+}
+
 function checkAnswer() {
   const q = questions[currentIndex], answer = getCurrentAnswerTokens();
-  if (answer.length !== q.tokens.length) { feedback.textContent = "まだすべてのカードが並んでいません。"; feedback.className = "feedback ng"; return; }
+  if (answer.length !== q.tokens.length) {
+    feedback.textContent = "まだすべてのカードが並んでいません。";
+    feedback.className = "feedback ng";
+    return;
+  }
   const isCorrect = answer.join("|||") === q.tokens.join("|||");
-  feedback.textContent = isCorrect ? "Correct!" : "Not yet. 日本語訳と語順をもう一度確認しましょう。";
-  feedback.className = isCorrect ? "feedback ok" : "feedback ng";
+  if (isCorrect) {
+    feedback.textContent = "Correct!";
+    feedback.className = "feedback ok";
+  } else {
+    feedback.innerHTML = `Not yet. 日本語訳と語順をもう一度確認しましょう。<div class="correct-answer"><strong>正答：</strong> ${escapeHTML(correctAnswerText(q))}</div>`;
+    feedback.className = "feedback ng";
+  }
 }
 
 function showHint() {
