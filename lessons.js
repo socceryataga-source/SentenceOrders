@@ -80,11 +80,6 @@ window.LESSONS = {
     "mode": "chunk"
   },
   {
-    "en": "Life has many difficulties",
-    "jp": "人生には多くの困難がある。",
-    "mode": "word"
-  },
-  {
     "en": "When you face them, listen to your heart.",
     "jp": "それら（困難）に直面した時は、心の声を聞きなさい。",
     "mode": "word"
@@ -102,6 +97,11 @@ window.LESSONS = {
   {
     "en": "But remember: / you learn / and grow / through / failure",
     "jp": "しかし覚えておくべきだ。人々は失敗から学び、成長するということを。",
+    "mode": "chunk"
+  },
+  {
+    "en": "The real / failure / is / not / taking / any / action / at all",
+    "jp": "本当の失敗は、全く何も行動しないことだ。",
     "mode": "chunk"
   }
 ]
