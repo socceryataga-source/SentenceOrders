@@ -267,6 +267,7 @@ function loadQuestion(index) {
   shuffle(q.tokens).forEach(token => bankArea.appendChild(createToken(token)));
   backBtn.disabled = index === 0;
   nextBtn.textContent = index === questions.length - 1 ? "Finish" : "Next";
+  nextBtn.disabled = true;
 }
 
 function getCurrentAnswerTokens() { return [...answerArea.querySelectorAll(".token")].map(el => el.textContent); }
