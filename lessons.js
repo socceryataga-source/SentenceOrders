@@ -54,7 +54,7 @@ window.LESSONS = {
 
 "Lesson1-4": [
   {
-    "en": "In Myanmer / I was / working / completely / on my own / at first",
+    "en": "In Myanmar / I was / working / completely / on my own / at first",
     "jp": "ミャンマーで、私は最初完全に自分の力だけで働いた。",
     "mode": "chunk"
   },
@@ -101,6 +101,43 @@ window.LESSONS = {
   {
     "en": "The real / failure / is / not / taking / any / action / at all",
     "jp": "本当の失敗は、全く何も行動しないことだ。",
+    "mode": "chunk"
+  }
+],
+  "Lesson1-4Adv": [
+  {
+    "en": "I / had to / finish / the report / on my own",
+    "jp": "私はそのレポートを自分の力だけで仕上げなければならなかった。",
+    "mode": "chunk"
+  },
+  {
+    "en": "Our class / became / more organized / after / we / shared / clear roles",
+    "jp": "明確な役割を分担した後、私たちのクラスはより組織的になった。",
+    "mode": "chunk"
+  },
+  {
+    "en": "With / limited time / and / a clear goal, / we / completed / the project",
+    "jp": "限られた時間と明確な目標で、私たちはその企画を完成させた。",
+    "mode": "chunk"
+  },
+  {
+    "en": "This experience / led / me / to think / about / my future",
+    "jp": "この経験が、私に自分の将来について考えさせた。",
+    "mode": "chunk"
+  },
+  {
+    "en": "My teacher / helped / me / to understand / the importance / of effort",
+    "jp": "先生は私が努力の大切さを理解するのを助けてくれた。",
+    "mode": "chunk"
+  },
+  {
+    "en": "You / may / face / many difficulties / along the way",
+    "jp": "あなたはその途中で多くの困難に直面するかもしれない。",
+    "mode": "chunk"
+  },
+  {
+    "en": "The real failure / is / not / trying / at all",
+    "jp": "本当の失敗は、まったく挑戦しないことだ。",
     "mode": "chunk"
   }
 ]
