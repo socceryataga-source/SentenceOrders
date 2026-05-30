@@ -50,8 +50,7 @@ window.LESSONS = {
       "jp": "何かを始めれば、物事はうまくいくでしょう。",
       "mode": "word"
     }
-  ]
-};
+  ],
 
 "Lesson1-4": [
   {
@@ -105,3 +104,4 @@ window.LESSONS = {
     "mode": "chunk"
   }
 ]
+};
