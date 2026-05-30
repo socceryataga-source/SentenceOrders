@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Word Order Builder</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>英語語順トレーニング</title>
+  <link rel="stylesheet" href="style.css?v=20260530-2" />
 </head>
 <body>
   <div class="app-shell">
     <header class="hero">
       <div>
-        <p class="eyebrow">English Warm-up Activity</p>
-        <h1>Word Order Builder</h1>
-        <p class="subtitle">固定URLで使える、語順並べ替え教材サイト</p>
+        <p class="eyebrow">MAKE THE SENTENCE</p>
+        <h1>英語語順トレーニング</h1>
+        <p class="subtitle">日本語訳をヒントに、英語カードを正しい語順に並べよう。</p>
       </div>
-      <div class="badge">Lessons Edition</div>
+      <div class="badge">Sentence Order Practice</div>
     </header>
 
     <main>
@@ -34,12 +34,12 @@
               <li>lesson ID と問題を入力する</li>
               <li>「lessons.jsを生成・ダウンロード」を押す</li>
               <li>GitHub上の <code>lessons.js</code> を上書きする</li>
-              <li>表示された生徒用URLを配布する</li>
+              <li>固定入口URL、または <code>?lesson=ID</code> 付きURLを配布する</li>
             </ol>
           </div>
 
           <label class="field-label" for="lesson-id">Lesson ID</label>
-          <input id="lesson-id" class="lesson-input" value="myanmar01" maxlength="40" />
+          <input id="lesson-id" class="lesson-input" value="Lesson1-4" maxlength="40" />
 
           <div class="format-box">
             <strong>入力形式</strong>
@@ -47,20 +47,13 @@
             <p class="small-note">英文に「/」を入れるとチャンク単位、入れない場合は単語単位になります。</p>
           </div>
 
-          <textarea id="sentence-input" spellcheck="false">I believed that people's destinies depended on when and where they were born. || 人々の運命は、いつどこで生まれたかによって決まるのだと私は信じていました。
-I was shocked by the tragic sight. || 私はその悲惨な光景に衝撃を受けました。
-I carried on with my daily life. || 私は日常生活を続けました。
-You must become a doctor to help suffering children. || あなたは苦しんでいる子どもたちを助けるために医者にならなければなりません。
-My desire to become a doctor and help people in need grew stronger. || 医者になって困っている人々を助けたいという私の思いはさらに強くなりました。
-I decided to believe in myself and studied hard to improve my grades. || 私は自分を信じることに決め、成績を上げるために一生懸命勉強しました。
-I obtained my medical license and began working at a hospital. || 私は医師免許を取得し、病院で働き始めました。
-I decided to work at an emergency center to become a better doctor. || よりよい医者になるために、私は救急センターで働くことに決めました。
-My boss challenged me to take action. || 上司は私に行動を起こすよう促しました。
-Things will work out if you start doing something. || 何かを始めれば、物事はうまくいくでしょう。</textarea>
+          <textarea id="sentence-input" spellcheck="false">In Myanmar / I was / working / completely / on my own / at first || ミャンマーで、私は最初完全に自分の力だけで働いた。
+But / one person / cannot / do / much / and / I needed / to / be / more organized || しかし、一人では多くのことはできないため、より組織的になることが必要だった。
+With / my / limited savings / and / some small / donations / I started / a / volunteer / medical organization || 限られた貯金とわずかの寄付で、私は慈善医療団体をはじめた。</textarea>
 
           <div class="input-help">
-            <div><strong>単語単位：</strong> <code>I was shocked by the tragic sight. || 私はその悲惨な光景に衝撃を受けました。</code></div>
-            <div><strong>チャンク単位：</strong> <code>I was shocked / by the tragic sight. || 私はその悲惨な光景に衝撃を受けました。</code></div>
+            <div><strong>単語単位：</strong><code>I was shocked by the tragic sight. || 私はその悲惨な光景に衝撃を受けました。</code></div>
+            <div><strong>チャンク単位：</strong><code>I was shocked / by the tragic sight. || 私はその悲惨な光景に衝撃を受けました。</code></div>
           </div>
 
           <div class="actions">
@@ -72,7 +65,7 @@ Things will work out if you start doing something. || 何かを始めれば、�
 
           <div id="student-url-box" class="url-output hidden">
             <h3>生徒用URL</h3>
-            <p>GitHubに <code>lessons.js</code> をアップロード後、このURLを生徒に配布します。</p>
+            <p>GitHubに <code>lessons.js</code> をアップロード後、このURLを生徒に配布できます。</p>
             <div class="url-row">
               <input id="student-url" readonly />
               <button id="copy-url-btn" class="primary">Copy</button>
@@ -103,7 +96,7 @@ Things will work out if you start doing something. || 何かを始めれば、�
         <div class="quiz-card">
           <div class="question-head">
             <div>
-              <p class="eyebrow dark">Arrange the English cards</p>
+              <p class="eyebrow dark">ARRANGE THE ENGLISH CARDS</p>
               <h2 id="question-title">Question 1</h2>
             </div>
             <span id="mode-label" class="mode-label">Word Mode</span>
@@ -124,12 +117,14 @@ Things will work out if you start doing something. || 何かを始めれば、�
 
           <div id="feedback" class="feedback"></div>
 
-          <div class="quiz-actions">
-            <button id="check-btn" class="primary">Check</button>
+          <div class="check-row">
+            <button id="check-btn" class="check-main">Check Answer</button>
+          </div>
+          <div class="nav-row">
             <button id="hint-btn" class="secondary">Hint</button>
             <button id="reset-btn" class="secondary">Reset</button>
             <button id="back-btn" class="secondary">Back</button>
-            <button id="next-btn" class="primary">Next</button>
+            <button id="next-btn" class="next-button" disabled>Next</button>
           </div>
         </div>
       </section>
@@ -156,7 +151,7 @@ Things will work out if you start doing something. || 何かを始めれば、�
     </main>
   </div>
 
-  <script src="lessons.js"></script>
-  <script src="script.js"></script>
+  <script src="lessons.js?v=20260530-2"></script>
+  <script src="script.js?v=20260530-2"></script>
 </body>
 </html>
