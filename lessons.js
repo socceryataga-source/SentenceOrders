@@ -104,20 +104,15 @@ window.LESSONS = {
     "mode": "chunk"
   }
 ],
-  "Lesson1-4Adv": [
+"Lesson1-4Adv": [
   {
-    "en": "I / had to / finish / the report / on my own",
-    "jp": "私はそのレポートを自分の力だけで仕上げなければならなかった。",
+    "en": "With / limited time / and / a clear goal, / we / finished / the project",
+    "jp": "限られた時間と明確な目標で、私たちはその企画を終えた。",
     "mode": "chunk"
   },
   {
-    "en": "Our class / became / more organized / after / we / shared / clear roles",
-    "jp": "明確な役割を分担した後、私たちのクラスはより組織的になった。",
-    "mode": "chunk"
-  },
-  {
-    "en": "With / limited time / and / a clear goal, / we / completed / the project",
-    "jp": "限られた時間と明確な目標で、私たちはその企画を完成させた。",
+    "en": "The real problem / is / not / making / mistakes / at all",
+    "jp": "本当の問題は、まったく間違えないことではない。",
     "mode": "chunk"
   },
   {
@@ -126,8 +121,13 @@ window.LESSONS = {
     "mode": "chunk"
   },
   {
-    "en": "My teacher / helped / me / to understand / the importance / of effort",
-    "jp": "先生は私が努力の大切さを理解するのを助けてくれた。",
+    "en": "I / had to / solve / the problem / on my own",
+    "jp": "私はその問題を自分の力だけで解決しなければならなかった。",
+    "mode": "chunk"
+  },
+  {
+    "en": "Our group / became / more organized / after / we / shared / clear roles",
+    "jp": "明確な役割を分担した後、私たちの班はより組織的になった。",
     "mode": "chunk"
   },
   {
@@ -136,8 +136,23 @@ window.LESSONS = {
     "mode": "chunk"
   },
   {
-    "en": "The real failure / is / not / trying / at all",
-    "jp": "本当の失敗は、まったく挑戦しないことだ。",
+    "en": "My teacher / helped / me / to understand / the importance / of effort",
+    "jp": "先生は私が努力の大切さを理解するのを助けてくれた。",
+    "mode": "chunk"
+  },
+  {
+    "en": "Her advice / led / us / to choose / a better plan",
+    "jp": "彼女の助言が、私たちをより良い計画を選ぶことへ導いた。",
+    "mode": "chunk"
+  },
+  {
+    "en": "She / prepared / for the speech / on her own",
+    "jp": "彼女はそのスピーチの準備を自分の力だけで行った。",
+    "mode": "chunk"
+  },
+  {
+    "en": "With / a small budget / and / strong support, / they / started / a new club",
+    "jp": "少ない予算と強い支援で、彼らは新しい部活動を始めた。",
     "mode": "chunk"
   }
 ]
